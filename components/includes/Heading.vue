@@ -1,11 +1,19 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <header class="d-flex justify-content-start px-3 py-3 mb-3 border border-info">
-        <ul class="nav nav-pills">
-          <h1>Новости</h1>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <div class="container">
+      <nuxt-link class="navbar-brand" to="/news"><h1>Nuxt-app</h1></nuxt-link>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <nuxt-link class="nav-link fs-4 active" aria-current="page" to="/news"
+              >News</nuxt-link
+            >
+          </li>
+          <li class="nav-item">
+            <nuxt-link class="nav-link fs-4" to="/authors">Authors</nuxt-link>
+          </li>
         </ul>
-      </header>
+      </div>
     </div>
-  </div>
+  </nav>
 </template>

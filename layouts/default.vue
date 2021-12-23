@@ -1,7 +1,13 @@
 <template>
   <div>
     <Heading />
-    <Nuxt />
+    <section>
+      <div class="container">
+        <div class="row">
+          <Nuxt />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -14,3 +20,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.container {
+  max-width: 830px;
+}
+</style>

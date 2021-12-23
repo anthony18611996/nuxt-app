@@ -2,7 +2,11 @@
   <div @click="openNews(newsItem)" class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="~/assets/img/demo.jpg" class="img-fluid rounded-start" alt="" />
+        <img
+          src="~/assets/img/demo.jpg"
+          class="img-fluid rounded-start"
+          alt=""
+        />
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -28,7 +32,7 @@ export default {
   },
   methods: {
     openNews(item) {
-      this.$router.push("/news/" + item.id);
+      this.$router.push("/authors/" + item.id);
     },
   },
 };
