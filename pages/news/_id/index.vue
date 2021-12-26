@@ -46,7 +46,6 @@ export default {
       const newsDetail = await $api
         .$get(GET_NEWS_URL + params.id)
         .then((response) => {
-          console.log(response);
           return response;
         });
       return { newsDetail };

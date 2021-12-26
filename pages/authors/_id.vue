@@ -37,7 +37,6 @@ export default {
       const newsList = await $api
         .$get(GET_NEWS_BY_AUTHOR + params.id + "/posts")
         .then((response) => {
-          console.log(response);
           return response;
         });
       return { newsList };

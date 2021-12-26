@@ -88,7 +88,7 @@ export default {
       this.$api
         .$patch(`/posts/` + this.newsItem.id, this.newsItem)
         .then((response) => {
-          console.log(response);
+          response;
           this.success = true;
         });
     },

@@ -149,8 +149,6 @@ export default {
       let v = this.valid();
       if (!v) return;
       this.$api.$post(`/posts`, this.newsItem).then((response) => {
-        //this.$router.push("/news/" + response.id);
-        console.log(response);
         this.success = true;
       });
     },

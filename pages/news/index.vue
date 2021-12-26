@@ -54,7 +54,6 @@ export default {
   async asyncData({ $api }) {
     try {
       const news = await $api.$get(GET_NEWS_URL).then((response) => {
-        console.log(response);
         return response;
       });
       return { news };
