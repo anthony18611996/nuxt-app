@@ -10,6 +10,7 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
+          <h4 class="card-title">Author ID: {{ newsItem.userId }}</h4>
           <h5 class="card-title">{{ newsItem.title }}</h5>
           <p class="card-text">{{ newsItem.body }}</p>
           <p class="card-text">
@@ -32,7 +33,7 @@ export default {
   },
   methods: {
     openNews(item) {
-      this.$router.push("/authors/" + item.id);
+      this.$router.push("/authors/" + item.userId);
     },
   },
 };

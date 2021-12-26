@@ -10,6 +10,12 @@
         v-model="newsItem.title"
       />
       <label for="title">Enter title</label>
+      <p
+        v-if="validFields.title !== ''"
+        class="form-control is-invalid mt-3 fs-5 p-3"
+      >
+        {{ validFields.title }}
+      </p>
     </div>
     <h3>Author</h3>
     <div class="row g-2 mb-3">
@@ -23,6 +29,12 @@
             v-model="newsItem.author"
           />
           <label for="floatingInputGrid">Enter author</label>
+          <p
+            v-if="validFields.author !== ''"
+            class="form-control is-invalid mt-3 fs-5 p-3"
+          >
+            {{ validFields.author }}
+          </p>
         </div>
       </div>
       <div class="col-md">
@@ -47,6 +59,12 @@
         v-model="newsItem.perview"
       ></textarea>
       <label for="perview">Enter perview</label>
+      <p
+        v-if="validFields.perview !== ''"
+        class="form-control is-invalid mt-3 fs-5 p-3"
+      >
+        {{ validFields.perview }}
+      </p>
     </div>
     <h3>Text</h3>
     <div class="form-floating mb-3">
@@ -55,9 +73,15 @@
         placeholder="Enter text"
         id="text"
         style="height: 300px"
-        v-model="newsItem.text"
+        v-model="newsItem.body"
       ></textarea>
-      <label for="text">Enter text</label>
+      <label for="text">Enter body</label>
+      <p
+        v-if="validFields.body !== ''"
+        class="form-control is-invalid mt-3 fs-5 p-3"
+      >
+        {{ validFields.body }}
+      </p>
     </div>
     <h3>Image</h3>
     <div class="form-floating mb-3">
@@ -71,7 +95,11 @@
       <label for="title">Enter image link</label>
     </div>
     <div class="d-grid d-md-flex justify-content-md-end">
-      <button class="btn btn-primary btn-lg fs-4" type="button" @click="addNews">
+      <button
+        class="btn btn-primary btn-lg fs-4"
+        type="button"
+        @click="addNews"
+      >
         Add news
       </button>
     </div>
@@ -89,16 +117,53 @@ export default {
         author: "",
         date: "",
         perview: "",
-        text: "",
+        body: "",
         imageLink: "",
+      },
+      validFields: {
+        title: "",
+        body: "",
+        perview: "",
+        author: "",
       },
     };
   },
   methods: {
+  //Создание новости
     addNews() {
+      let v = this.valid();
+      if (!v) return;
       this.$api.$post(`/posts`, this.newsItem).then((response) => {
+        //this.$router.push("/news/" + response.id);
         console.log(response);
       });
+    },
+    //Валидация
+    valid() {
+      let v = true;
+      this.validFields = {
+        title: "",
+        body: "",
+        perview: "",
+        author: "",
+      };
+      if (this.newsItem.title === "") {
+        v = false;
+        this.validFields.title = "Required field";
+      }
+      if (this.newsItem.body === "") {
+        v = false;
+        this.validFields.body = "Required field";
+      }
+      if (this.newsItem.perview === "") {
+        v = false;
+        this.validFields.perview = "Required field";
+      }
+      if (this.newsItem.author === "") {
+        v = false;
+        this.validFields.author = "Required field";
+      }
+      return v;
     },
   },
 };

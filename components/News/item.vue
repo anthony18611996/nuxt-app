@@ -27,6 +27,7 @@ export default {
     },
   },
   methods: {
+    //Переход в детальную новость
     openNews(item) {
       this.$router.push("/news/" + item.id);
     },
