@@ -94,20 +94,34 @@
       />
       <label for="title">Enter image link</label>
     </div>
-    <div class="d-grid d-md-flex justify-content-md-end">
+    <div class="d-grid d-md-flex justify-content-md-end mb-3">
       <button
         class="btn btn-primary btn-lg fs-4"
         type="button"
+        :class="
+          newsItem.title !== '' &&
+          newsItem.perview !== '' &&
+          newsItem.body !== '' &&
+          newsItem.author !== ''
+            ? ''
+            : 'disabled'
+        "
         @click="addNews"
       >
         Add news
       </button>
     </div>
+    <Success v-if="success" :successMessage="'News successfully created'" />
   </div>
 </template>
 
 <script>
+import Success from "~/components/Alerts/Success"
+
 export default {
+  components: {
+    Success
+  },
   data: () => {
     return {
       loading: false,
@@ -126,16 +140,18 @@ export default {
         perview: "",
         author: "",
       },
+      success: false,
     };
   },
   methods: {
-  //Создание новости
+    //Создание новости
     addNews() {
       let v = this.valid();
       if (!v) return;
       this.$api.$post(`/posts`, this.newsItem).then((response) => {
         //this.$router.push("/news/" + response.id);
         console.log(response);
+        this.success = true;
       });
     },
     //Валидация

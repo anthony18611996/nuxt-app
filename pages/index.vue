@@ -34,3 +34,11 @@ export default {
   name: "IndexPage",
 };
 </script>
+
+<style>
+.disabled {
+  cursor: default;
+  pointer-events: none;
+  filter: grayscale(1);
+}
+</style>

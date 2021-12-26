@@ -45,22 +45,28 @@
       />
       <label for="title">Enter image link</label>
     </div> -->
-    <div class="d-grid d-md-flex justify-content-md-end">
+    <div class="d-grid d-md-flex justify-content-md-end mb-3">
       <button
         class="btn btn-primary btn-lg fs-4"
         type="button"
+        :class="newsItem.title !== '' && newsItem.body !== '' ? '' : 'disabled'"
         @click="editNews"
       >
         Edit news
       </button>
     </div>
+    <Success v-if="success" :successMessage="'News successfully edited'" />
   </div>
 </template>
 
 <script>
+import Success from "~/components/Alerts/Success";
 import { GET_NEWS_URL } from "~/api/news/urls";
 
 export default {
+  components: {
+    Success,
+  },
   //Проверка на числовое значение id
   validate({ params }) {
     return /^\d+$/.test(params.id);
@@ -84,6 +90,7 @@ export default {
         title: "",
         body: "",
       },
+      success: false,
     };
   },
   methods: {
@@ -93,6 +100,7 @@ export default {
         .$patch(`/posts/` + this.newsItem.id, this.newsItem)
         .then((response) => {
           console.log(response);
+          this.success = true;
         });
     },
     valid() {
