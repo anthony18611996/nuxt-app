@@ -33,7 +33,6 @@ import Error from "~/components/Errors/Error";
 import { GET_NEWS_URL } from "~/api/news/urls";
 export default {
   components: {
-    Loader,
     Error,
   },
   //Проверка на числовую запись id
