@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <Loader v-if="loading" /> -->
     <Error
       errorMessage="Oops, something went wrong. Please try again later."
       v-if="error"
@@ -30,7 +29,6 @@
 </template>
 
 <script>
-import Loader from "~/components/Loaders/Loader";
 import Error from "~/components/Errors/Error";
 import { GET_NEWS_URL } from "~/api/news/urls";
 export default {

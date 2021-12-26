@@ -34,17 +34,6 @@
         {{ validFields.body }}
       </p>
     </div>
-    <!--<h3>Image</h3>
-     <div class="form-floating mb-3">
-      <input
-        type="text"
-        class="form-control"
-        id="image"
-        placeholder="Enter image link"
-        v-model="newsItem.imageLink"
-      />
-      <label for="title">Enter image link</label>
-    </div> -->
     <div class="d-grid d-md-flex justify-content-md-end mb-3">
       <button
         class="btn btn-primary btn-lg fs-4"
